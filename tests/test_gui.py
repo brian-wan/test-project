@@ -35,3 +35,24 @@ def test_gui_add_invalid_input_shows_error(app):
     app.entry_b.insert(0, "1")
     app.on_add()
     assert "not a valid number" in app.result_label.cget("text")
+
+
+def test_gui_subtract_valid_inputs(app):
+    app.entry_a.insert(0, "5")
+    app.entry_b.insert(0, "3")
+    app.on_subtract()
+    assert app.result_label.cget("text") == "Result: 2.0"
+
+
+def test_gui_subtract_negative_result(app):
+    app.entry_a.insert(0, "2")
+    app.entry_b.insert(0, "5")
+    app.on_subtract()
+    assert app.result_label.cget("text") == "Result: -3.0"
+
+
+def test_gui_subtract_invalid_input_shows_error(app):
+    app.entry_a.insert(0, "not-a-number")
+    app.entry_b.insert(0, "1")
+    app.on_subtract()
+    assert "not a valid number" in app.result_label.cget("text")

@@ -1,6 +1,6 @@
 import pytest
 
-from addapp.calculator import add, parse_number
+from addapp.calculator import add, parse_number, subtract
 
 
 @pytest.mark.parametrize(
@@ -15,6 +15,20 @@ from addapp.calculator import add, parse_number
 )
 def test_add(a, b, expected):
     assert add(a, b) == expected
+
+
+@pytest.mark.parametrize(
+    "a, b, expected",
+    [
+        (5, 2, 3),
+        (2, 5, -3),
+        (0, 0, 0),
+        (2.5, 0.5, 2.0),
+        (-3, -4, 1),
+    ],
+)
+def test_subtract(a, b, expected):
+    assert subtract(a, b) == expected
 
 
 @pytest.mark.parametrize(
