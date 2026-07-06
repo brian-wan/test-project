@@ -1,7 +1,7 @@
 # test-project
 
-A small Tkinter GUI for adding two numbers, with arithmetic logic kept separate
-from the GUI so it can be tested headlessly.
+A small Tkinter GUI for adding or subtracting two numbers, with arithmetic logic
+kept separate from the GUI so it can be tested headlessly.
 
 ## Run
 

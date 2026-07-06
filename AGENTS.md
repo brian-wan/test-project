@@ -4,7 +4,7 @@ This file is the project's committed home for project-intrinsic agent knowledge:
 
 - Add durable project-specific notes here as they are discovered through real work.
 
-## Add Two Numbers GUI
+## Add/Subtract Two Numbers GUI
 
 - Stack: Python 3 stdlib `tkinter` for the GUI, `pytest` for tests. No third-party GUI
   dependency.
