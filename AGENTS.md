@@ -15,6 +15,11 @@ This file is the project's committed home for project-intrinsic agent knowledge:
   import. `src/addapp/gui.py` wires a Tkinter `App` class to that logic. Tests live in
   `tests/test_calculator.py` (pure logic) and `tests/test_gui.py` (real Tkinter widgets,
   no mocking).
+- Operations beyond `add` (e.g. `divide`) follow the same convention: raise a plain
+  `ValueError` with a user-facing message for any operation-specific error case (e.g.
+  division by zero), so the GUI's existing `except ValueError` handling in each
+  `on_<op>` method catches it and shows the message in `result_label` without a
+  traceback ever reaching the user.
 - Run the app: `PYTHONPATH=src python -m addapp.gui` (or `python src/addapp/gui.py`).
 - Run tests: `pip install -r requirements.txt && pytest`.
 - `tests/test_gui.py` needs a working Tk installation and a display. It uses
