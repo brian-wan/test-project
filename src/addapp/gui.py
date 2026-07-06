@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from addapp.calculator import add, parse_number, subtract
+from addapp.calculator import add, divide, parse_number, subtract
 
 
 class App:
@@ -22,8 +22,11 @@ class App:
         subtract_button = tk.Button(root, text="Subtract", command=self.on_subtract)
         subtract_button.grid(row=2, column=1, padx=8, pady=8)
 
+        divide_button = tk.Button(root, text="Divide", command=self.on_divide)
+        divide_button.grid(row=3, column=0, columnspan=2, padx=8, pady=8)
+
         self.result_label = tk.Label(root, text="")
-        self.result_label.grid(row=3, column=0, columnspan=2, pady=8)
+        self.result_label.grid(row=4, column=0, columnspan=2, pady=8)
 
         root.bind("<Return>", lambda _event: self.on_add())
 
@@ -46,6 +49,17 @@ class App:
             return
 
         self.result_label.config(text=f"Result: {subtract(a, b)}")
+
+    def on_divide(self) -> None:
+        try:
+            a = parse_number(self.entry_a.get())
+            b = parse_number(self.entry_b.get())
+            result = divide(a, b)
+        except ValueError as exc:
+            self.result_label.config(text=str(exc))
+            return
+
+        self.result_label.config(text=f"Result: {result}")
 
 
 def main() -> None:

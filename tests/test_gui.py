@@ -56,3 +56,24 @@ def test_gui_subtract_invalid_input_shows_error(app):
     app.entry_b.insert(0, "1")
     app.on_subtract()
     assert "not a valid number" in app.result_label.cget("text")
+
+
+def test_gui_divide_valid_inputs(app):
+    app.entry_a.insert(0, "6")
+    app.entry_b.insert(0, "3")
+    app.on_divide()
+    assert app.result_label.cget("text") == "Result: 2.0"
+
+
+def test_gui_divide_by_zero_shows_error(app):
+    app.entry_a.insert(0, "6")
+    app.entry_b.insert(0, "0")
+    app.on_divide()
+    assert "Cannot divide by zero" in app.result_label.cget("text")
+
+
+def test_gui_divide_invalid_input_shows_error(app):
+    app.entry_a.insert(0, "not-a-number")
+    app.entry_b.insert(0, "1")
+    app.on_divide()
+    assert "not a valid number" in app.result_label.cget("text")
